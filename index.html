@@ -1,353 +1,881 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Happy Birthday MADIHA</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:100%;height:100%;overflow:hidden}
-body{font-family:'Poppins',sans-serif;background:#080012;color:#fff}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday MADIHA 🎂</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes:wght@400&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.screen{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;overflow-y:auto;overflow-x:hidden;z-index:10;background:linear-gradient(140deg,#080012 0%,#150028 40%,#0c0018 70%,#10001e 100%);transition:opacity 0.5s}
-.screen.active{display:flex}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: white;
+        }
 
-#starsBox{position:fixed;inset:0;pointer-events:none;z-index:1}
-.star{position:absolute;border-radius:50%;background:#fff;animation:twinkle var(--d,3s) ease-in-out infinite var(--del,0s)}
-@keyframes twinkle{0%,100%{opacity:.08;transform:scale(.8)}50%{opacity:.85;transform:scale(1.3)}}
+        /* Floating Hearts Background */
+        .floating-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
 
-.particle{position:fixed;border-radius:50%;pointer-events:none;z-index:2;animation:pUp var(--d,9s) linear infinite var(--del,0s)}
-@keyframes pUp{0%{transform:translateY(100vh);opacity:0}10%{opacity:.45}85%{opacity:.2}100%{transform:translateY(-60px) translateX(var(--dx,0px));opacity:0}}
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            animation: floatHeart 8s ease-in-out infinite;
+            opacity: 0.6;
+        }
 
-@keyframes fadeInUp{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes scaleIn{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
-@keyframes slideL{from{opacity:0;transform:translateX(-50px)}to{opacity:1;transform:translateX(0)}}
-@keyframes slideR{from{opacity:0;transform:translateX(50px)}to{opacity:1;transform:translateX(0)}}
-@keyframes glow{0%,100%{text-shadow:0 0 12px rgba(255,215,0,.35),0 0 35px rgba(255,215,0,.15)}50%{text-shadow:0 0 25px rgba(255,215,0,.7),0 0 55px rgba(255,215,0,.35),0 0 90px rgba(255,215,0,.15)}}
-@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-@keyframes shake{0%,100%{transform:rotate(0)}15%{transform:rotate(-14deg)}30%{transform:rotate(14deg)}45%{transform:rotate(-10deg)}60%{transform:rotate(10deg)}75%{transform:rotate(-5deg)}90%{transform:rotate(5deg)}}
-@keyframes confettiDrop{0%{transform:translateY(-8vh) rotate(0);opacity:1}100%{transform:translateY(105vh) rotate(var(--rot,600deg));opacity:.2}}
-@keyframes borderPulse{0%,100%{border-color:rgba(255,215,0,.25)}50%{border-color:rgba(255,105,180,.45)}}
-@keyframes softPulse{0%,100%{opacity:.4}50%{opacity:1}}
-@keyframes rotateHue{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(360deg)}}
-@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes floatHeart {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
 
-.btn{display:inline-block;padding:13px 34px;border:1.5px solid rgba(255,215,0,.45);background:linear-gradient(135deg,rgba(255,215,0,.08),rgba(255,105,180,.08));color:#ffd700;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;border-radius:50px;cursor:pointer;letter-spacing:1px;transition:all .3s;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);position:relative;overflow:hidden}
-.btn:hover,.btn:active{background:linear-gradient(135deg,rgba(255,215,0,.2),rgba(255,105,180,.2));box-shadow:0 4px 22px rgba(255,215,0,.25);transform:translateY(-2px)}
-.btn::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);transition:.6s;transform:skewX(-15deg)}
-.btn:hover::after{left:120%}
+        /* Stars Background */
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
 
-.glass{background:rgba(255,255,255,.035);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.07);border-radius:16px}
-.deco{width:45px;height:1px;background:linear-gradient(90deg,transparent,#ffd700,transparent);margin:8px auto}
-.diamond{width:22px;height:22px;background:linear-gradient(135deg,#ffd700,#ff69b4);transform:rotate(45deg);margin:0 auto 16px;opacity:.5;border-radius:3px}
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s ease-in-out infinite;
+        }
 
-.confetti{position:fixed;top:-12px;z-index:3;pointer-events:none;border-radius:2px;animation:confettiDrop var(--d,3.5s) linear var(--del,0s) infinite}
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
 
-.screen::-webkit-scrollbar{width:3px}
-.screen::-webkit-scrollbar-thumb{background:rgba(255,215,0,.15);border-radius:10px}
+        /* Main Container */
+        .container {
+            position: relative;
+            z-index: 1;
+        }
 
-/* --- SCREEN 0 --- */
-.s0-wrap{text-align:center;z-index:5}
-.s0-sub{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.4);animation:fadeIn 1s both}
-.s0-name{font-family:'Great Vibes',cursive;font-size:clamp(48px,13vw,85px);color:#ffd700;animation:fadeInUp 1s .3s both,glow 3s infinite;line-height:1.2}
-.s0-age{font-family:'Playfair Display',serif;font-size:clamp(16px,3.5vw,24px);color:rgba(255,255,255,.6);letter-spacing:5px;animation:fadeInUp 1s .5s both;margin-bottom:4px}
-.s0-date{font-size:12px;color:rgba(255,255,255,.35);letter-spacing:3px;animation:fadeInUp 1s .7s both;margin-bottom:28px}
-.s0-btn{animation:fadeInUp 1s 1s both}
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
 
-/* --- SCREEN 1 --- */
-.v-title{font-family:'Great Vibes',cursive;font-size:clamp(24px,5.5vw,42px);color:#ffd700;margin-bottom:14px;animation:fadeInUp .8s both,glow 3s infinite;text-align:center}
-.v-box{width:86%;max-width:400px;border-radius:16px;overflow:hidden;border:1.5px solid rgba(255,215,0,.2);box-shadow:0 0 30px rgba(255,215,0,.08),0 12px 35px rgba(0,0,0,.4);animation:scaleIn .8s both}
-.v-box video{width:100%;display:block}
-.v-sub{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:10px;animation:fadeIn 1s .5s both}
-#btn1{margin-top:18px;opacity:0;transition:opacity .6s}
+        .crown {
+            font-size: 80px;
+            animation: bounce 2s ease-in-out infinite;
+        }
 
-/* --- SCREEN 2 --- */
-.splash{text-align:center;z-index:5}
-.sp1{font-size:clamp(10px,2.2vw,14px);letter-spacing:7px;text-transform:uppercase;color:rgba(255,255,255,.4)}
-.sp2{font-family:'Playfair Display',serif;font-size:clamp(32px,9vw,70px);font-weight:900;background:linear-gradient(135deg,#ffd700,#ff69b4,#ffd700,#ff69b4);background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;margin:6px 0;animation:rotateHue 6s linear infinite}
-.sp3{font-family:'Great Vibes',cursive;font-size:clamp(40px,11vw,82px);color:#ffd700;animation:glow 2s infinite}
-.sp-badge{display:inline-block;padding:6px 22px;border:1px solid rgba(255,215,0,.35);border-radius:50px;font-size:clamp(10px,2vw,13px);color:rgba(255,215,0,.75);letter-spacing:4px;margin-top:10px;background:rgba(255,215,0,.05)}
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
 
-/* --- SCREEN 3 --- */
-#screen3{padding:30px 10px;justify-content:flex-start}
-.gt{font-family:'Great Vibes',cursive;font-size:clamp(24px,5.5vw,38px);color:#ffd700;margin-bottom:16px;animation:glow 3s infinite}
-.gg{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:380px;width:100%}
-.pc{border-radius:12px;overflow:hidden;border:1.5px solid rgba(255,215,0,.18);background:rgba(255,255,255,.02);transition:all .3s;animation:borderPulse 5s infinite}
-.pc:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(255,215,0,.12)}
-.pc img{width:100%;height:130px;object-fit:cover;display:block;transition:transform .3s}
-.pc:hover img{transform:scale(1.05)}
-.pc .cap{padding:7px;text-align:center;font-size:10px;color:rgba(255,255,255,.65);font-style:italic;background:rgba(0,0,0,.3);letter-spacing:.3px}
-.gm{max-width:380px;width:100%;margin:14px 0;padding:14px;text-align:center;font-size:12px;color:rgba(255,255,255,.55);line-height:1.7}
+        .hero h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3, #ff6b6b);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient 3s ease infinite;
+            margin: 20px 0;
+        }
 
-/* --- SCREEN 4 --- */
-.gl{font-family:'Great Vibes',cursive;font-size:clamp(20px,4.5vw,32px);color:#ffd700;margin-bottom:22px;animation:glow 3s infinite}
-.gift{position:relative;width:120px;height:120px;cursor:pointer;animation:floatY 3s infinite}
-.gift:active{transform:scale(.94)}
-.gb{position:absolute;bottom:0;width:120px;height:82px;background:linear-gradient(135deg,#d6186f,#ff69b4);border-radius:8px;box-shadow:0 6px 22px rgba(214,24,111,.25)}
-.gli{position:absolute;bottom:82px;left:-7px;width:134px;height:28px;background:linear-gradient(135deg,#c01060,#d6186f);border-radius:5px;transition:all .6s;z-index:2}
-.gift.opened .gli{transform:translateY(-45px) rotate(-28deg);opacity:0}
-.grv{position:absolute;left:50%;transform:translateX(-50%);width:14px;background:linear-gradient(180deg,#ffd700,#ffe44d);z-index:1}
-.grvt{height:28px}.grvb{height:82px;bottom:0}
-.grh{position:absolute;width:100%;height:14px;top:34px;background:linear-gradient(90deg,#ffd700,#ffe44d);z-index:1}
-.gbow{position:absolute;top:-18px;left:50%;transform:translateX(-50%);z-index:3}
-.gbow::before,.gbow::after{content:'';position:absolute;width:20px;height:18px;background:#ffd700;border-radius:50% 50% 0 50%}
-.gbow::before{left:-10px;transform:rotate(-12deg)}
-.gbow::after{left:5px;border-radius:50% 50% 50% 0;transform:rotate(12deg)}
-.ghint{margin-top:18px;font-size:11px;color:rgba(255,255,255,.35);letter-spacing:3px;text-transform:uppercase;animation:softPulse 2s infinite}
-.gvid{display:none;width:86%;max-width:400px;border-radius:16px;overflow:hidden;border:1.5px solid rgba(255,215,0,.2);box-shadow:0 0 35px rgba(255,215,0,.12);margin-top:14px}
-.gvid.show{display:block;animation:scaleIn .6s both}
-.gvid video{width:100%;display:block}
-#btn4{display:none;margin-top:14px}
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
 
-/* --- SCREEN 5 --- */
-#screen5{padding:30px 10px;justify-content:flex-start}
-.wt{font-family:'Great Vibes',cursive;font-size:clamp(28px,6vw,44px);color:#ffd700;margin-bottom:14px;animation:glow 3s infinite}
-.wc{max-width:360px;width:100%;padding:10px 16px;margin:3px 0;border-radius:12px;font-size:12px;color:rgba(255,255,255,.75);text-align:center;line-height:1.5}
-.wf{max-width:380px;width:100%;padding:20px;margin:14px 0;border:1.5px solid rgba(255,215,0,.3);border-radius:16px;text-align:center;background:rgba(255,215,0,.03);font-size:13px;line-height:1.8;color:rgba(255,255,255,.82)}
-.wf .ws{font-family:'Great Vibes',cursive;font-size:22px;color:#ffd700;margin-top:8px}
-.ps{display:flex;gap:7px;margin:14px 0;justify-content:center;flex-wrap:wrap}
-.ps img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,215,0,.3);transition:all .3s}
-.ps img:hover{transform:scale(1.15);border-color:#ffd700;box-shadow:0 0 12px rgba(255,215,0,.3)}
-.credit{margin-top:14px;padding:10px 20px;border-radius:50px;font-size:11px;color:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02);letter-spacing:1px}
+        .hero .name {
+            font-size: 5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #f093fb, #f5576c, #4facfe, #00f2fe);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient 4s ease infinite;
+            text-shadow: 0 0 30px rgba(240, 147, 251, 0.5);
+            letter-spacing: 5px;
+        }
 
-/* decorative corner accents */
-.corner-tl,.corner-tr,.corner-bl,.corner-br{position:absolute;width:30px;height:30px;pointer-events:none;z-index:6}
-.corner-tl{top:20px;left:20px;border-top:1px solid rgba(255,215,0,.2);border-left:1px solid rgba(255,215,0,.2)}
-.corner-tr{top:20px;right:20px;border-top:1px solid rgba(255,215,0,.2);border-right:1px solid rgba(255,215,0,.2)}
-.corner-bl{bottom:20px;left:20px;border-bottom:1px solid rgba(255,215,0,.2);border-left:1px solid rgba(255,215,0,.2)}
-.corner-br{bottom:20px;right:20px;border-bottom:1px solid rgba(255,215,0,.2);border-right:1px solid rgba(255,215,0,.2)}
+        .date-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px 40px;
+            border-radius: 50px;
+            margin-top: 30px;
+            font-size: 1.3rem;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            animation: pulse 2s ease-in-out infinite;
+        }
 
-/* ring decoration */
-.ring{position:absolute;border-radius:50%;border:1px solid rgba(255,215,0,.06);pointer-events:none}
-.ring1{width:300px;height:300px;top:50%;left:50%;transform:translate(-50%,-50%)}
-.ring2{width:450px;height:450px;top:50%;left:50%;transform:translate(-50%,-50%)}
-.ring3{width:600px;height:600px;top:50%;left:50%;transform:translate(-50%,-50%)}
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6); }
+        }
 
-@media(max-width:370px){
-.pc img{height:110px}
-.gg{gap:8px}
-}
-</style>
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            animation: scrollBounce 2s ease-in-out infinite;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            font-size: 30px;
+        }
+
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(15px); }
+        }
+
+        /* Message Section */
+        .message-section {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(180deg, transparent 0%, rgba(255,107,107,0.1) 50%, transparent 100%);
+        }
+
+        .message-section h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #ff6b6b;
+            margin-bottom: 40px;
+        }
+
+        .message-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .message-box p {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        .message-box .highlight {
+            color: #feca57;
+            font-weight: 600;
+        }
+
+        /* Photo Sections */
+        .photo-section {
+            padding: 60px 20px;
+        }
+
+        .photo-card {
+            max-width: 900px;
+            margin: 60px auto;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 30px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .photo-card:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .photo-card .photo-wrapper {
+            flex: 0 0 280px;
+            position: relative;
+        }
+
+        .photo-card img {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 4px solid;
+            border-image: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3) 1;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .photo-card .photo-frame {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px dashed rgba(255,255,255,0.3);
+            border-radius: 25px;
+            pointer-events: none;
+        }
+
+        .photo-card .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .photo-card .content h3 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .photo-card .content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #c0c0c0;
+        }
+
+        .photo-card .content .emoji {
+            font-size: 2rem;
+            margin-top: 15px;
+        }
+
+        /* Responsive Photo Cards */
+        @media (max-width: 768px) {
+            .photo-card {
+                flex-direction: column !important;
+                text-align: center;
+            }
+
+            .photo-card .photo-wrapper {
+                flex: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .name {
+                font-size: 3rem;
+            }
+
+            .photo-card img {
+                width: 220px;
+                height: 220px;
+            }
+        }
+
+        /* Qualities Section */
+        .qualities-section {
+            padding: 80px 20px;
+            background: linear-gradient(180deg, transparent 0%, rgba(102, 126, 234, 0.1) 50%, transparent 100%);
+        }
+
+        .qualities-section h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            text-align: center;
+            color: #48dbfb;
+            margin-bottom: 50px;
+        }
+
+        .qualities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .quality-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .quality-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+        }
+
+        .quality-card .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .quality-card h4 {
+            font-size: 1.3rem;
+            color: #feca57;
+            margin-bottom: 10px;
+        }
+
+        .quality-card p {
+            color: #a0a0a0;
+            font-size: 0.95rem;
+        }
+
+        /* Gift Section */
+        .gift-section {
+            padding: 100px 20px;
+            text-align: center;
+            background: linear-gradient(180deg, transparent 0%, rgba(255, 107, 107, 0.1) 50%, transparent 100%);
+        }
+
+        .gift-section h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+        }
+
+        .gift-section p {
+            font-size: 1.2rem;
+            color: #c0c0c0;
+            margin-bottom: 40px;
+        }
+
+        .gift-box-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gift-box-container:hover {
+            transform: scale(1.1);
+        }
+
+        .gift-box {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .gift-base {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 140px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        }
+
+        .gift-base::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 100%;
+            background: linear-gradient(135deg, #feca57 0%, #f9ca24 100%);
+        }
+
+        .gift-lid {
+            position: absolute;
+            top: 20px;
+            left: -10px;
+            right: -10px;
+            height: 50px;
+            background: linear-gradient(135deg, #ff8787 0%, #ff6b6b 100%);
+            border-radius: 8px;
+            transition: all 0.5s ease;
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .gift-lid::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 35px;
+            height: 100%;
+            background: linear-gradient(135deg, #feca57 0%, #f9ca24 100%);
+        }
+
+        .gift-bow {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 50px;
+            transition: all 0.5s ease;
+        }
+
+        .gift-box-container.opened .gift-lid {
+            transform: translateY(-80px) rotate(-30deg);
+            opacity: 0;
+        }
+
+        .gift-box-container.opened .gift-bow {
+            transform: translateX(-50%) translateY(-80px) scale(1.5);
+            opacity: 0;
+        }
+
+        .click-text {
+            margin-top: 30px;
+            font-size: 1.1rem;
+            color: #feca57;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        /* Video Modal */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .video-modal.active {
+            display: flex;
+        }
+
+        .video-modal video {
+            max-width: 90%;
+            max-height: 70vh;
+            border-radius: 20px;
+            box-shadow: 0 0 50px rgba(255, 107, 107, 0.3);
+        }
+
+        .video-modal h3 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #ff6b6b;
+            margin-bottom: 30px;
+        }
+
+        .close-video {
+            margin-top: 30px;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .close-video:hover {
+            transform: scale(1.1);
+        }
+
+        /* Final Wish Section */
+        .final-wish {
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .final-wish h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient 3s ease infinite;
+            margin-bottom: 30px;
+        }
+
+        .final-wish p {
+            font-size: 1.4rem;
+            color: #e0e0e0;
+            max-width: 700px;
+            margin: 0 auto 20px;
+            line-height: 1.8;
+        }
+
+        .cake-emoji {
+            font-size: 100px;
+            animation: bounce 2s ease-in-out infinite;
+            display: block;
+            margin-top: 40px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0,0,0,0.3);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        footer p {
+            color: #888;
+            font-size: 1rem;
+        }
+
+        footer span {
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+            overflow: hidden;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            top: -20px;
+            animation: confettiFall 4s ease-out forwards;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+    </style>
 </head>
 <body>
+    <!-- Floating Hearts -->
+    <div class="floating-hearts" id="hearts"></div>
+    
+    <!-- Stars -->
+    <div class="stars" id="stars"></div>
 
-<div id="starsBox"></div>
+    <!-- Confetti Container -->
+    <div class="confetti" id="confetti"></div>
 
-<!-- SCREEN 0: START -->
-<div class="screen active" id="screen0">
-<div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
-<div class="ring ring1"></div><div class="ring ring2"></div><div class="ring ring3"></div>
-<div class="s0-wrap">
-<div class="diamond"></div>
-<p class="s0-sub">You're Invited To</p>
-<h1 class="s0-name">MADIHA's</h1>
-<div class="deco"></div>
-<h2 class="s0-age">13th Birthday</h2>
-<p class="s0-date">10 MARCH</p>
-<button class="btn s0-btn" onclick="goTo(1)">Open</button>
-</div>
-</div>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="crown">👑</div>
+            <h1>Happy Birthday</h1>
+            <div class="name">MADIHA</div>
+            <div class="date-badge">🎂 13th March 🎂</div>
+            <div class="scroll-indicator">
+                <span>👇</span>
+            </div>
+        </section>
 
-<!-- SCREEN 1: VIDEO -->
-<div class="screen" id="screen1">
-<div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
-<h1 class="v-title">Happy Birthday MADIHA</h1>
-<div class="v-box">
-<video id="vid1" playsinline><source src="https://files.catbox.moe/b99mbf.mp4" type="video/mp4"></video>
-</div>
-<p class="v-sub">13th Birthday Celebration</p>
-<button class="btn" id="btn1" onclick="goTo(2)">Aage Dekho</button>
-</div>
+        <!-- Message Section -->
+        <section class="message-section">
+            <h2>Dear MADIHA</h2>
+            <div class="message-box">
+                <p>Aaj tera special din hai aur main chahta hoon ke tu jaane ke <span class="highlight">tu kitni khaas hai!</span></p>
+                <p>Tu wo insaan hai jo <span class="highlight">sabke chehre pe smile</span> la deti hai. Teri baaton mein wo magic hai jo dil ko sukoon deta hai.</p>
+                <p>Teri friendship meri zindagi ki <span class="highlight">sabse khoobsurat cheez</span> hai aur main Allah ka shukar ada karta hoon ke tune mujhe apna dost mana!</p>
+            </div>
+        </section>
 
-<!-- SCREEN 2: SPLASH -->
-<div class="screen" id="screen2">
-<div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
-<div class="ring ring1"></div><div class="ring ring2"></div>
-<div class="splash">
-<p class="sp1" style="animation:fadeInUp .7s both">- W I S H I N G -</p>
-<h1 class="sp2" style="animation:fadeInUp .7s .25s both">HAPPY<br>BIRTHDAY</h1>
-<h2 class="sp3" style="animation:fadeInUp .7s .5s both">MADIHA</h2>
-<div class="deco" style="animation:fadeIn 1s .7s both"></div>
-<div class="sp-badge" style="animation:fadeInUp .7s .8s both">13TH BIRTHDAY</div>
-</div>
-<button class="btn" style="margin-top:28px;animation:fadeInUp .8s 1.3s both" onclick="goTo(3)">Photos Dekho</button>
-</div>
+        <!-- Photo Sections with Compliments -->
+        <section class="photo-section">
+            <!-- Photo 1 -->
+            <div class="photo-card">
+                <div class="photo-wrapper">
+                    <img src="https://i.ibb.co/SwSsGXf5/IMG-20250308-205convverted-01.jpg" alt="MADIHA">
+                    <div class="photo-frame"></div>
+                </div>
+                <div class="content">
+                    <h3>Beautiful Soul</h3>
+                    <p>Teri smile dekh ke lagta hai jaise saari duniya ki khushiyan ek jagah aa gayi hain. Tu wo cheez hai jo paise se nahi milti - ek sachchi dost! Teri aankhon mein wo chamak hai jo stars ko bhi sharminda kar de.</p>
+                    <div class="emoji">✨💫</div>
+                </div>
+            </div>
 
-<!-- SCREEN 3: GALLERY -->
-<div class="screen" id="screen3">
-<h2 class="gt">Kuch Khaas Lamhe</h2>
-<div class="gg" id="galGrid"></div>
-<div class="gm glass">
-<div class="deco"></div>
-<p>Har photo mein ek kahani hai, aur har kahani mein tu hai MADIHA. Duniya ki sabse khoobsurat insaan.</p>
-<div class="deco"></div>
-</div>
-<button class="btn" style="margin:14px 0 36px" onclick="goTo(4)">Ek Surprise Hai</button>
-</div>
+            <!-- Photo 2 -->
+            <div class="photo-card">
+                <div class="photo-wrapper">
+                    <img src="https://i.ibb.co/4ZfR6BBd/IMG-20250308-2056convverted-01.jpg" alt="MADIHA">
+                    <div class="photo-frame"></div>
+                </div>
+                <div class="content">
+                    <h3>Queen Vibes</h3>
+                    <p>Kya baat hai yaar! Attitude level 100! Tu jahan bhi jaaye, apni alag hi pehchaan banati hai. Tera confidence dekh ke lagta hai ke queens bhi notes le rahi hain! Sach mein tu ek star hai.</p>
+                    <div class="emoji">👑💖</div>
+                </div>
+            </div>
 
-<!-- SCREEN 4: GIFT -->
-<div class="screen" id="screen4">
-<div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
-<p class="gl">Tere Liye Ek Tohfa...</p>
-<div class="gift" id="giftBox" onclick="openGift()">
-<div class="gli"><div class="grv grvt"></div><div class="gbow"></div></div>
-<div class="gb"><div class="grv grvb"></div><div class="grh"></div></div>
-</div>
-<p class="ghint" id="ghint">Tap Karke Khol</p>
-<div class="gvid" id="giftVid">
-<video id="vid2" controls playsinline><source src="https://files.catbox.moe/b99mbf.mp4" type="video/mp4"></video>
-</div>
-<button class="btn" id="btn4" onclick="goTo(5)">Wishes Dekho</button>
-</div>
+            <!-- Photo 3 -->
+            <div class="photo-card">
+                <div class="photo-wrapper">
+                    <img src="https://i.ibb.co/svkGMDtH/IMG-20250308-2convverted-01.jpg" alt="MADIHA">
+                    <div class="photo-frame"></div>
+                </div>
+                <div class="content">
+                    <h3>Dil Ki Rani</h3>
+                    <p>Tujhe dekh ke lagta hai ke Allah ne waqai kuch logon ko special banaya hai. Tera dil itna bada hai ke usme sabke liye jagah hai. Tu wo dost hai jiske saath waqt guzarna feel like heaven!</p>
+                    <div class="emoji">🌹💕</div>
+                </div>
+            </div>
 
-<!-- SCREEN 5: WISHES -->
-<div class="screen" id="screen5">
-<h2 class="wt">Dil Se Dua</h2>
-<div id="wishBox"></div>
-<div class="wf" id="finalCard" style="display:none">
-<div class="deco"></div>
-<p>Allah tujhe hamesha khush rakhe, salamat rakhe. Teri har dua qubool ho. Tu jahan bhi rahe, khushiyan tere saath rahen. Tera yeh 13th birthday tere liye bohot saare naye sapne lekar aaye. Bohot zyada pyaar tere liye MADIHA.</p>
-<div class="deco" style="margin-top:10px"></div>
-<div class="ws">- With Love, For MADIHA -</div>
-</div>
-<div class="ps" id="pStrip"></div>
-<div class="credit">Made by Anas saka 🇦🇪</div>
-<button class="btn" style="margin:14px 0 36px" onclick="restart()">Phir Se Dekho</button>
-</div>
+            <!-- Photo 4 -->
+            <div class="photo-card">
+                <div class="photo-wrapper">
+                    <img src="https://i.ibb.co/Lh2JZY2h/IMG-20250308-convverted-01.jpg" alt="MADIHA">
+                    <div class="photo-frame"></div>
+                </div>
+                <div class="content">
+                    <h3>Shining Star</h3>
+                    <p>Tu chamakti hai jaise raat mein sitaare! Teri hasi sun ke flowers bhi khil jaate hain. Tu itni pyaari hai ke words bhi kam pad jaate hain tujhe describe karne ke liye. Simply the best!</p>
+                    <div class="emoji">⭐🌸</div>
+                </div>
+            </div>
 
-<script>
-var photos=[
-{u:'https://i.ibb.co/SwSsGXf5/image.jpg',c:'Duniya ki sabse pyaari ladki'},
-{u:'https://i.ibb.co/4ZfR6BBd/image.jpg',c:'Teri muskaan mein jaadu hai'},
-{u:'https://i.ibb.co/svkGMDtH/image.jpg',c:'Sabse khoobsurat insaan'},
-{u:'https://i.ibb.co/Lh2JZY2h/image.jpg',c:'Tu ek pari se kam nahi'},
-{u:'https://i.ibb.co/VWw6XfKr/image.jpg',c:'Dil ki rani MADIHA'},
-{u:'https://i.ibb.co/35TZLzFw/image.jpg',c:'Hamesha aise hi muskurati reh'}
-];
-var wishes=[
-'Tujhe zindagi ki saari khushiyan miley',
-'Tera har sapna poora ho InshaAllah',
-'Hamesha tera chehra muskurata rahe',
-'Allah tujhe har buri nazar se bachaaye',
-'Tu jahan bhi jaaye kamyabi tere kadam chume',
-'Teri zindagi mein sirf pyaar aur khushi ho',
-'Yeh 13th saal tere liye sabse special ho',
-'Duniya ki saari achaiyan tujhe miley'
-];
-var cur=0;
+            <!-- Photo 5 -->
+            <div class="photo-card">
+                <div class="photo-wrapper">
+                    <img src="https://i.ibb.co/VWw6XfKr/IMG-20250308convverted-01.jpg" alt="MADIHA">
+                    <div class="photo-frame"></div>
+                </div>
+                <div class="content">
+                    <h3>Precious Gem</h3>
+                    <p>Diamonds bhi tere aage fade hain! Tu ek heere jaisi hai - rare aur precious. Duniya mein bahut log hain lekin tere jaisa koi nahi. Tu ek masterpiece hai jo Allah ne banaya hai!</p>
+                    <div class="emoji">💎🦋</div>
+                </div>
+            </div>
 
-function mkStars(){
-var b=document.getElementById('starsBox');
-for(var i=0;i<70;i++){
-var s=document.createElement('div');s.className='star';
-s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';
-s.style.setProperty('--d',(2+Math.random()*4)+'s');
-s.style.setProperty('--del',Math.random()*4+'s');
-var sz=1+Math.random()*2.5;s.style.width=sz+'px';s.style.height=sz+'px';
-b.appendChild(s);
-}}
+            <!-- Photo 6 -->
+            <div class="photo-card">
+                <div class="photo-wrapper">
+                    <img src="https://i.ibb.co/35TZLzFw/IMG-202503convverted-01.jpg" alt="MADIHA">
+                    <div class="photo-frame"></div>
+                </div>
+                <div class="content">
+                    <h3>My Bestie</h3>
+                    <p>Yeh photo dekh ke dil khush ho gaya! Tu meri bestie hai aur hamesha rahegi. Teri dosti meri life ki sabse achi cheez hai. Main dua karta hoon ke tu hamesha aise hi khush rahe!</p>
+                    <div class="emoji">💗🎀</div>
+                </div>
+            </div>
+        </section>
 
-function mkParticles(){
-var cols=['rgba(255,215,0,.3)','rgba(255,105,180,.3)','rgba(147,112,219,.25)','rgba(100,200,255,.2)'];
-for(var i=0;i<18;i++){
-var p=document.createElement('div');p.className='particle';
-p.style.left=Math.random()*100+'%';
-p.style.background=cols[Math.floor(Math.random()*cols.length)];
-p.style.setProperty('--d',(7+Math.random()*7)+'s');
-p.style.setProperty('--del',Math.random()*8+'s');
-p.style.setProperty('--dx',(Math.random()*80-40)+'px');
-var sz=2+Math.random()*3;p.style.width=sz+'px';p.style.height=sz+'px';
-document.body.appendChild(p);
-}}
+        <!-- Qualities Section -->
+        <section class="qualities-section">
+            <h2>Tu Kyun Special Hai</h2>
+            <div class="qualities-grid">
+                <div class="quality-card">
+                    <div class="icon">💖</div>
+                    <h4>Golden Heart</h4>
+                    <p>Tera dil sone jaisa hai. Tu sabka khayal rakhti hai aur hamesha help karne ko ready rehti hai.</p>
+                </div>
+                <div class="quality-card">
+                    <div class="icon">😊</div>
+                    <h4>Sweet Smile</h4>
+                    <p>Teri smile dekh ke saari tension gayab ho jaati hai. Tu hasi ki dukaan hai!</p>
+                </div>
+                <div class="quality-card">
+                    <div class="icon">🧠</div>
+                    <h4>Smart Mind</h4>
+                    <p>Tu itni smart hai ke log tujhse seekhte hain. Brain aur beauty dono ek jagah!</p>
+                </div>
+                <div class="quality-card">
+                    <div class="icon">🤝</div>
+                    <h4>True Friend</h4>
+                    <p>Tu wo dost hai jo mushkil mein saath deti hai. Sachchi friendship ki misaal!</p>
+                </div>
+                <div class="quality-card">
+                    <div class="icon">🌟</div>
+                    <h4>Positive Vibes</h4>
+                    <p>Tere paas rehke positive energy milti hai. Tu khud ek good luck charm hai!</p>
+                </div>
+                <div class="quality-card">
+                    <div class="icon">👑</div>
+                    <h4>Born Queen</h4>
+                    <p>Tu paida hi queen ban ke aayi hai. Tera aura alag hai, teri vibe alag hai!</p>
+                </div>
+            </div>
+        </section>
 
-function mkConfetti(el){
-var cols=['#ffd700','#ff69b4','#ff1493','#00bfff','#7b68ee','#ff6347','#32cd32','#ff4500','#da70d6'];
-for(var i=0;i<45;i++){
-var c=document.createElement('div');c.className='confetti';
-c.style.left=Math.random()*100+'%';
-c.style.background=cols[Math.floor(Math.random()*cols.length)];
-c.style.setProperty('--d',(2.5+Math.random()*3)+'s');
-c.style.setProperty('--del',Math.random()*1.8+'s');
-c.style.setProperty('--rot',(400+Math.random()*500)+'deg');
-c.style.width=(4+Math.random()*7)+'px';
-c.style.height=(6+Math.random()*10)+'px';
-if(Math.random()>.6)c.style.borderRadius='50%';
-el.appendChild(c);
-}}
+        <!-- Gift Section -->
+        <section class="gift-section">
+            <h2>Tera Special Gift</h2>
+            <p>Maine tere liye ek surprise rakha hai... Gift box pe click kar!</p>
+            
+            <div class="gift-box-container" id="giftBox" onclick="openGift()">
+                <div class="gift-box">
+                    <div class="gift-base"></div>
+                    <div class="gift-lid"></div>
+                    <div class="gift-bow">🎀</div>
+                </div>
+            </div>
+            <p class="click-text">👆 Click to Open! 👆</p>
+        </section>
 
-function goTo(n){
-var c=document.getElementById('screen'+cur);
-var nx=document.getElementById('screen'+n);
-c.querySelectorAll('video').forEach(function(v){v.pause()});
-c.style.opacity='0';
-setTimeout(function(){
-c.classList.remove('active');c.style.opacity='';
-nx.classList.add('active');nx.style.opacity='0';
-requestAnimationFrame(function(){nx.style.opacity='1'});
-cur=n;onEnter(n);
-},450);
-}
+        <!-- Video Modal -->
+        <div class="video-modal" id="videoModal">
+            <h3>Surprise For You!</h3>
+            <video id="giftVideo" controls>
+                <source src="https://files.catbox.moe/b99mbf.mp4" type="video/mp4">
+            </video>
+            <button class="close-video" onclick="closeVideo()">Close</button>
+        </div>
 
-function onEnter(n){
-if(n===1){
-var v=document.getElementById('vid1');v.currentTime=0;v.muted=false;
-v.play().catch(function(){v.muted=true;v.play()});
-setTimeout(function(){document.getElementById('btn1').style.opacity='1'},3000);
-}
-if(n===2)mkConfetti(document.getElementById('screen2'));
-if(n===3)buildGal();
-if(n===5){buildWishes();buildStrip();}
-}
+        <!-- Final Wish -->
+        <section class="final-wish">
+            <h2>Happy Birthday MADIHA!</h2>
+            <p>May Allah bless you with all the happiness in the world. Tere saare sapne poore hon aur tu hamesha aise hi muskurati rahe!</p>
+            <p>Best wishes for your amazing journey ahead. Tu meri best friend hai aur hamesha rahegi!</p>
+            <span class="cake-emoji">🎂</span>
+        </section>
 
-function buildGal(){
-var g=document.getElementById('galGrid');g.innerHTML='';
-photos.forEach(function(p,i){
-var d=document.createElement('div');d.className='pc';
-d.style.animation=(i%2===0?'slideL':'slideR')+' .5s ease-out '+(i*.15)+'s both';
-d.innerHTML='<img src="'+p.u+'" alt="MADIHA" loading="lazy"><div class="cap">'+p.c+'</div>';
-g.appendChild(d);
-});
-}
+        <!-- Footer -->
+        <footer>
+            <p>Made with ❤️ by <span>Anas saka 🇦🇪</span></p>
+        </footer>
+    </div>
 
-function openGift(){
-var b=document.getElementById('giftBox');
-if(b.classList.contains('opened'))return;
-b.style.animation='shake .6s ease-in-out';
-setTimeout(function(){
-b.classList.add('opened');b.style.animation='';
-setTimeout(function(){
-b.style.display='none';
-document.getElementById('ghint').style.display='none';
-var w=document.getElementById('giftVid');w.classList.add('show');
-document.getElementById('vid2').play();
-var bt=document.getElementById('btn4');bt.style.display='inline-block';bt.style.animation='fadeInUp .5s both';
-mkConfetti(document.getElementById('screen4'));
-},550);
-},600);
-}
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            const container = document.getElementById('hearts');
+            const hearts = ['💖', '💕', '💗', '💝', '❤️', '💜', '💙'];
+            
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 8 + 's';
+                heart.style.animationDuration = (8 + Math.random() * 4) + 's';
+                container.appendChild(heart);
+            }
+        }
 
-function buildWishes(){
-var bx=document.getElementById('wishBox');bx.innerHTML='';
-wishes.forEach(function(w,i){
-var d=document.createElement('div');d.className='wc glass';
-d.style.animation='slideUp .5s ease-out '+(i*.18)+'s both';
-d.textContent=w;bx.appendChild(d);
-});
-setTimeout(function(){
-var fc=document.getElementById('finalCard');fc.style.display='block';
-fc.style.animation='scaleIn .7s ease-out both';
-},wishes.length*180+400);
-}
+        // Create stars
+        function createStars() {
+            const container = document.getElementById('stars');
+            
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(star);
+            }
+        }
 
-function buildStrip(){
-var s=document.getElementById('pStrip');s.innerHTML='';
-photos.forEach(function(p){
-var img=document.createElement('img');img.src=p.u;img.alt='MADIHA';img.loading='lazy';
-s.appendChild(img);
-});
-}
+        // Create confetti
+        function createConfetti() {
+            const container = document.getElementById('confetti');
+            const colors = ['#ff6b6b', '#feca57', '#48dbfb', '#ff9ff3', '#1dd1a1', '#5f27cd'];
+            
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti-piece';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 2 + 's';
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    container.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 4000);
+                }, i * 50);
+            }
+        }
 
-funct
+        // Open gift box
+        function openGift() {
+            const giftBox = document.getElementById('giftBox');
+            const videoModal = document.getElementById('videoModal');
+            const video = document.getElementById('giftVideo');
+            
+            giftBox.classList.add('opened');
+            
+            setTimeout(() => {
+                videoModal.classList.add('active');
+                video.play();
+                createConfetti();
+            }, 600);
+        }
+
+        // Close video
+        function closeVideo() {
+            const videoModal = document.getElementById('videoModal');
+            const video = document.getElementById('giftVideo');
+            const giftBox = document.getElementById('giftBox');
+            
+            video.pause();
+            videoModal.classList.remove('active');
+            giftBox.classList.remove('opened');
+        }
+
+        // Initialize
+        createHearts();
+        createStars();
+        
+        // Initial confetti burst
+        setTimeout(createConfetti, 500);
+
+        // Add scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.photo-card, .quality-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
